@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Issue;
 use Illuminate\Http\Request;
 
 class IssueController extends Controller
@@ -14,7 +15,7 @@ class IssueController extends Controller
     public function index()
     {
         // issue list
-        return view('issue.index');
+        return view('issue.index')->with(["issues" => Issue::paginate(5)]);
     }
 
     /**
