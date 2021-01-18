@@ -20,6 +20,7 @@
                     </thead>
                     <tbody>
                     @foreach($issues as $issue)
+                        @if($issue)
                         <tr>
                             <td>{{$issue->id}}</td>
                             <td>{{$issue->category}}</td>
@@ -28,6 +29,7 @@
                             <td>{{$issue->priority}}</td>
                             <td>{{$issue->status}}</td>
                         </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>
