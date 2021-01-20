@@ -5,6 +5,35 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     Issue List
                 </div>
+                <hr>
+                <br>
+                <table class="table-auto">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Category</th>
+                            <th>Summary</th>
+                            <th>Serverity</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($issues as $issue)
+                        @if($issue)
+                        <tr>
+                            <td>{{$issue->id}}</td>
+                            <td>{{$issue->category}}</td>
+                            <td>{{$issue->summary}}</td>
+                            <td>{{$issue->severity}}</td>
+                            <td>{{$issue->priority}}</td>
+                            <td>{{$issue->status}}</td>
+                        </tr>
+                        @endif
+                    @endforeach
+                    </tbody>
+                </table>
+                {{ $issues->links() }}     
             </div>
         </div>
     </div>
