@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\IssueController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,3 +18,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('issue', IssueController::class)->middleware(['auth']);
+Route::resource('developer', DeveloperController::class)->middleware(['auth']);
+Route::resource('role', RoleController::class)->middleware(['auth']);
+Route::resource('category', CategoryController::class)->middleware(['auth']);
+Route::resource('project', ProjectController::class)->middleware(['auth']);
