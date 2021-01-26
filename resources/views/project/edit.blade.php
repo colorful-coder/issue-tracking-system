@@ -2,11 +2,9 @@
     <div class="container mx-auto px-6 py-12">
         <div class="mx-auto w-1/2">
             <div class="card">
-
                 <div class="card-header">
                     <h3 class="font-bold">Edit project</h3>
                 </div>
-
                 <div class="card-body">
                     <form action="{{ route('project.update', $project->id) }}" method="POST">
 
@@ -32,9 +30,7 @@
 
                     </form>
                 </div>
-
             </div>
         </div>
-
     </div>
 </x-app-layout>

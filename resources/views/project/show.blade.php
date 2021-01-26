@@ -116,7 +116,7 @@
                                 </div>
                             </div>
                         </div> <!-- end issue-detail-sidebar -->
-            
+
                     </div> <!-- issue-detail-container -->
                 </div>
             </div>

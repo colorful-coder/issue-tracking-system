@@ -1,21 +1,16 @@
 <x-app-layout>
     <div class="container mx-auto px-6 py-12">
-
         @if(session('success'))
         <div class="py-4 px-6 mb-3 bg-green-200 border-green-500 rounded-lg">
             {{ session('success') }}
         </div>
         @endif
-
         <div class="card">
-
             <div class="card-header">
                 <h3 class="font-bold">Project List</h3>
             </div>
-
             <div class="card-body">
                 <a href="{{ route('project.create') }}" class="btn btn-primary">Create</a>
-
                 <!-- project List -->
                 <div class="mt-6 shadow overflow-hidden border-b border-gray-200 rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
@@ -75,7 +70,6 @@
                         </tbody>
                     </table>
                 </div>
-
                 <div class="pagination mt-6">
                     {{ $projects->links() }}
                 </div>

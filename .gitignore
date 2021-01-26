@@ -13,3 +13,5 @@ npm-debug.log
 yarn-error.log
 public/css/app.css
 .gitignore
+.DS_Store
+resources/css/app.css
