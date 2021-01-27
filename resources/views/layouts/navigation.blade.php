@@ -54,7 +54,7 @@
 
                 <!-- Profile -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('project.index')" :active="request()->routeIs('project.index')">
+                    <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
                         {{ __('Profile') }}
                     </x-nav-link>
                 </div>
