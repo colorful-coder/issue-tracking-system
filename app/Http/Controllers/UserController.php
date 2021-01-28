@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -36,14 +35,10 @@ class UserController extends Controller
      * @param  App\Http\Requests\UserRequest  $request
      * @return \Illuminate\Http\Response
      */
+    // TODO: rename UserRequest to UserStoreRequest
     public function store(UserRequest $request)
     {
-        $validator = $request->validated();
-        $user = new User;
-        $user->name     = $request->name;
-        $user->email    = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->save();
+        User::create($request->only('name', 'email', 'password'));
         return redirect()->route('user.index')->with('success', 'A user was created.');
     }
 
@@ -64,9 +59,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
         return view('user.edit', compact('user'));
     }
 
@@ -77,16 +71,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
+        // TODO: use request validation named UserUpdateRequest
         $request->validate(['name' => 'required']);
-        $user = User::where('id', $id)->first();
         
-        if ($user) {
-            $status =$user->update([
-                'name' => $request->name,
-            ]);
-        }
+        $user->update($request->only('name'));
+
         return redirect()->route('user.index')->with('success', 'A user was updated.');
     }
 
@@ -96,9 +87,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        User::where('id', $id)->delete();
+        $user->delete();
         return redirect()->route('user.index')->with('success', 'A user was deleted.');
     }
 }
