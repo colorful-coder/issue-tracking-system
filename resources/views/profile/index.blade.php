@@ -1,14 +1,15 @@
+{{-- TODO:: use flex instead of float whenever creating the layout --}}
 <x-app-layout>
     <div class="container mx-auto">
         <h2 class="bg-white px-12 py-4 font-bold">Profile</h2>
         <div class="p-12 clearfix">
             <div class="w-1/4 float-left pr-4">
                 <h3 class="font-semibold">Profile Information</h3>
-                <p>Update your accuont's profile and email address</p>
+                <p>Update your account's profile and email address</p>
             </div>
             <div class="w-3/4 bg-white float-right p-4">
                 <form action="" method="">
-                     <div>
+                    <div>
                         <p class="mb-4">Photo</p>
                         <img id="profile-image" class="rounded-full h-24 w-24 mb-2" src="/images/profile.png" alt="profile image" />
                         <button class="addfiles py-2 px-4 rounded bg-white border border-gray-300">SELECT A NEW PHOTO</button>
@@ -55,6 +56,7 @@
         </div>
     </div>
 </x-app-layout>
+{{-- TODO:: don't use own class. use tailwindcss only --}}
 <style>
     .clearfix::after {
         content: "";
