@@ -45,8 +45,8 @@
                             </div>
                             <div class="mt-4">
                                 <h1 class="font-bold text-gray-500">Note</h1>
-                                <div class="border-t pt-2">
-                                    <textarea class="border" name="note" id="note" rows="4"></textarea>
+                                <div class="border-t pt-2 mb-4">
+                                    <textarea style="width: 100%; max-width: 100%;" rows="4" name="note" id="note"></textarea>
                                 </div>
                             </div>
                         </div> <!-- end issue-detail-content -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 class ProjectController extends Controller
 {
@@ -13,7 +14,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::latest()->paginate();
+        return view('project.index', compact('projects'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('project.create');
     }
 
     /**
@@ -34,7 +36,9 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['name' => 'required']);
+        Project::create($request->only('name'));
+        return redirect()->route('project.index')->with('success', 'A project was created.');
     }
 
     /**
@@ -56,7 +60,9 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::find($id);
+        return view('project.edit', compact('project'));
+
     }
 
     /**
@@ -68,7 +74,9 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate(['name' => 'required']);
+        Project::find($id)->update($request->only('name'));
+        return redirect()->route('project.index')->with('success', 'A project was updated.');
     }
 
     /**
@@ -79,6 +87,7 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Project::find($id)->delete();
+        return redirect()->route('project.index')->with('success', 'A project was deleted.');
     }
 }
