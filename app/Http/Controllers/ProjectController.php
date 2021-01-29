@@ -36,6 +36,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        // TODO: use validation request instead of local validation
         $request->validate(['name' => 'required']);
         Project::create($request->only('name'));
         return redirect()->route('project.index')->with('success', 'A project was created.');
@@ -60,6 +61,8 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
+        // TODO:: change route model binding 
+        // ref: https://laravel.com/docs/8.x/routing#route-model-binding
         $project = Project::find($id);
         return view('project.edit', compact('project'));
 
@@ -74,7 +77,10 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // TODO: use validation request instead of local validation
         $request->validate(['name' => 'required']);
+        // TODO:: change route model binding 
+        // ref: https://laravel.com/docs/8.x/routing#route-model-binding
         Project::find($id)->update($request->only('name'));
         return redirect()->route('project.index')->with('success', 'A project was updated.');
     }
@@ -87,6 +93,8 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
+        // TODO:: change route model binding 
+        // ref: https://laravel.com/docs/8.x/routing#route-model-binding
         Project::find($id)->delete();
         return redirect()->route('project.index')->with('success', 'A project was deleted.');
     }
